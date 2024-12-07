@@ -63,14 +63,12 @@ def get_data(resource_id, filters=None):
     return df
 
 
+@st.cache_data
 def startup():
-    data = [(next((k for k, v in resources().items() if v == resource), None), quarter,
-             get_data(resource, filters={'Quarter': quarter, }))
+    return [(next((k for k, v in resources().items() if v == resource), None), quarter,
+             pd.DataFrame(get_data(resource, filters={'Quarter': quarter, })))
             for resource in resources().values()
             for quarter in quarters()]
 
-    for item in data:
-        name = f'df_{str(item[0])}_{item[1]}'
-        st.write(name)
-        st.session_state[f'{name}'] = item[2]
+
 
