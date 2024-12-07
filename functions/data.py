@@ -55,7 +55,8 @@ def get_data(resource_id, filters=None):
         if not records:
             break
 
-        all_records.extend(records)
+        # all_records.extend(records)
+        all_records.append(records)
         offset += limit
 
     # return len(all_records)
