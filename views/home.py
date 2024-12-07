@@ -9,7 +9,7 @@ st.title('Reported Crime')
 #     for resource in resources().values():
 #         data.append(get_data(resource, filters={'Quarter': quarter}))
 data = [(next((k for k, v in resources().items() if v == resource), None), quarter,
-         get_data(resource, filters={'Quarter': quarter}))
+         get_data(resource, filters={'Quarter': quarter, 'YeshuvKod': 7000}))
         for resource in resources().values()
         for quarter in quarters()]
 
