@@ -61,3 +61,14 @@ def get_data(resource_id, filters=None):
 
     # return len(all_records)
     return df
+
+
+def startup():
+    data = [(next((k for k, v in resources().items() if v == resource), None), quarter,
+             get_data(resource, filters={'Quarter': quarter, }))
+            for resource in resources().values()
+            for quarter in quarters()]
+
+    for item in data:
+        name = f'df_{str(item[0])}_{item[1]}'
+        st.session_state[f'{name}'] = item[2]
