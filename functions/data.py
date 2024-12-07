@@ -59,7 +59,6 @@ def get_data(resource_id, filters=None):
 
     df = pd.DataFrame(all_records)
 
-    # return len(all_records)
     return df
 
 
