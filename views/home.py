@@ -7,7 +7,11 @@ st.title('Reported Crime')
 
 data = startup()
 
-st.write(data)
+period = [f'{item[0]}_{item[1]}' for item in data]
+chart_data = [len(item[2]) for item in data]
+
+st.write(period)
+st.write(chart_data)
 
 
 
