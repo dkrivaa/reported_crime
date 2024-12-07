@@ -57,4 +57,7 @@ def get_data(resource_id, filters=None):
         all_records.extend(records)
         offset += limit
 
-    return len(all_records)
+    df = pd.DataFrame(all_records)
+
+    # return len(all_records)
+    return df
