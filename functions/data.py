@@ -50,8 +50,7 @@ def get_data(resource_id, filters=None):
             break
 
         # Extract records
-        # records = data["result"]["records"]
-        records = data["result"]["total"]
+        records = data["result"]["records"]
         if not records:
             break
 
@@ -59,5 +58,4 @@ def get_data(resource_id, filters=None):
         all_records.append(records)
         offset += limit
 
-    # return len(all_records)
-    return sum(all_records)
+    return len(all_records)
