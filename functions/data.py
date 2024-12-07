@@ -63,7 +63,7 @@ def get_data(resource_id, filters=None):
     return df
 
 
-@st.cache_data
+@st.cache_data(show_spinner='Loading data.......', persist='disk')
 def startup():
     return [(next((k for k, v in resources().items() if v == resource), None), quarter,
              pd.DataFrame(get_data(resource, filters={'Quarter': quarter, })))
