@@ -6,7 +6,7 @@ from functions.data import startup
 st.title('Reported Crime')
 
 with st.spinner('Loading Data......'):
-    # startup()
+    startup()
 st.write('hello')
 
 
