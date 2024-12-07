@@ -4,6 +4,8 @@ import time
 from functions.data import startup
 
 st.title('Reported Crime')
+st.cache_data.clear()
+
 
 data = startup()
 
