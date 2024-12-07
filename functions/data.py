@@ -71,4 +71,5 @@ def startup():
 
     for item in data:
         name = f'df_{str(item[0])}_{item[1]}'
-        st.session_state[f'{name}'] = item[2]
+        # st.session_state[f'{name}'] = item[2]
+        st.write(name)
