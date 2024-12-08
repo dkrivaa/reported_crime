@@ -1,3 +1,4 @@
+import pandas as pd
 import streamlit as st
 import time
 
@@ -10,9 +11,8 @@ data = startup()
 quarter_crime = [len(data[i]) for i in range(len(data))]
 name = [f'{data[i]['Year'].unique().tolist()[0]}_{data[i]['Quarter'].unique().tolist()[0]}'
         for i in range(len(data))]
-st.write(quarter_crime)
-st.write(name)
+df = pd.DataFrame(quarter_crime, name)
 
-st.bar_chart(quarter_crime, x=name)
+st.bar_chart(df['quarter_crime'])
 
 
