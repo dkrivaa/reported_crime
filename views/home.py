@@ -12,7 +12,7 @@ st.divider()
 data = startup()
 
 with st.expander('Select data'):
-
+    yeshuv = yeshuv_element()
 
     district = district_element()
     if district is not None:
