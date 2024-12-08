@@ -31,6 +31,6 @@ with st.expander('Select data'):
             st.write('')
             st.write(df)
 
-st.write(st.session_state['district_merhav_dict'])
+st.write(st.session_state['merhav_dict'])
 
 
