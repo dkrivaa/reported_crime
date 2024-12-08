@@ -5,7 +5,8 @@ import pandas as pd
 def geography():
     options = ['Municipality', 'Police Territory']
     geo = st.radio(label='Select', options=options, index=None, label_visibility='hidden')
-    return options.index(geo)
+    if geo is not None:
+        return options.index(geo)
 
 
 def yeshuv_element():
