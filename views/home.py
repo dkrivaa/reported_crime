@@ -14,6 +14,7 @@ df = pd.DataFrame(quarter_crime, name)
 
 st.bar_chart(df)
 
-st.write(df)
+if st.button('See Data'):
+        st.write(df)
 
 
