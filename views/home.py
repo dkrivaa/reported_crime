@@ -15,7 +15,7 @@ df = pd.DataFrame(quarter_crime, name)
 # st.bar_chart(df)
 
 chart = alt.Chart(df).mark_bar().encode(
-    x='name',
+    x='quarter_crime',
     y=alt.Y('quarter_crime', scale=alt.Scale(domain=[75000, 105000]))
 )
 # Display the chart in Streamlit
