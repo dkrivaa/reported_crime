@@ -124,7 +124,7 @@ def startup():
     make_dict('merhav_dict', merhav_set)
     make_dict('station_dict', station_set)
     make_dict('crimeGroup_dict', crimeGroup_set)
-    make_dict('crimeType_set', crimeType_set)
+    make_dict('crimeType_dict', crimeType_set)
 
     def parent_dict(name, relevant_dict):
         if name not in st.session_state:
