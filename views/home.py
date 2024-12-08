@@ -3,7 +3,7 @@ import streamlit as st
 import altair as alt
 
 from functions.data import startup
-from functions.form_elements import yeshuv_element, district_element, merhav_element, station_element
+from functions.form_elements import geography, yeshuv_element, district_element, merhav_element, station_element
 
 st.title('Reported Crime')
 st.divider()
@@ -14,6 +14,7 @@ data = startup()
 quarter_crime = [data[i].shape[0] for i in range(len(data))]
 
 with st.expander('Select data'):
+    geo = geography()
     yeshuv = yeshuv_element()
     if yeshuv is not None:
         yeshuvKod = [k for k, v in st.session_state['yeshuv_dict'].items() if v == yeshuv][0]

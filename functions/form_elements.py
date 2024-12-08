@@ -2,6 +2,10 @@ import streamlit as st
 import pandas as pd
 
 
+def geography():
+    return st.radio('Select', ['Municipality', 'Police Territory'], index=None)
+
+
 def yeshuv_element():
     options = sorted(st.session_state['yeshuv_dict'].values())
     return st.selectbox('Municipality', options=options, index=None)
