@@ -70,6 +70,10 @@ def startup():
     crimeGroup_set = set()
     crimeType_set = set()
 
+    district_merhav_dict = {}
+    merhav_station_dict = {}
+    group_type_dict = {}
+
     df_list = []
 
     for resource in resources().values():
@@ -94,6 +98,16 @@ def startup():
                 crimeGroup_set.update(make_pairs('StatisticGroupKod', 'StatisticGroup'))
                 crimeType_set.update(make_pairs('StatisticTypeKod', 'StatisticType'))
 
+                def make_list_dict(varKod, targetKod, relevant_dict):
+                    for varKod, targetKod in df.groupby(varKod)[targetKod]:
+                        if varKod not in relevant_dict:
+                            relevant_dict[varKod] = set()
+                        relevant_dict[varKod].update(targetKod)
+
+                make_list_dict('PoliceDistrictKod', 'PoliceMerhavKod', district_merhav_dict)
+                make_list_dict('PoliceMerhavKod', 'PoliceStationKod', merhav_station_dict)
+                make_list_dict('StatisticGroupKod', 'StatisticTypeKod', group_type_dict)
+
                 columns_to_drop = ['FictiveIDNumber', 'Yeshuv', 'PoliceDistrict', 'PoliceMerhav',
                                    'PoliceStation', 'municipalKod', 'municipalName', 'StatisticAreaKod',
                                    'StatisticArea', 'StatisticGroup', 'StatisticType']
@@ -111,6 +125,14 @@ def startup():
     make_dict('station_dict', station_set)
     make_dict('crimeGroup_dict', crimeGroup_set)
     make_dict('crimeType_set', crimeType_set)
+
+    def parent_dict(name, relevant_dict):
+        if name not in st.session_state:
+            st.session_state[name] = relevant_dict
+
+    parent_dict('district_merhav_dict', district_merhav_dict)
+    parent_dict('merhav_station_dict', merhav_station_dict)
+    parent_dict('group_type_dict', group_type_dict)
 
     return df_list
 

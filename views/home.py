@@ -1,16 +1,18 @@
 import pandas as pd
 import streamlit as st
 import altair as alt
-from functions.data import startup
 
-# Get data and keep in cache
-data = startup()
+from functions.data import startup
+from functions.form_elements import district_element
 
 st.title('Reported Crime')
 st.divider()
 
+# Get data and keep in cache
+data = startup()
+
 with st.expander('Select data'):
-    district = st.selectbox('District', options=st.session_state['district_dict'].values(), index=None)
+    district = district_element()
     if district is not None:
         districtKod = [k for k, v in st.session_state['district_dict'].items() if v == district][0]
         st.write(districtKod)
