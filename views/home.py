@@ -11,6 +11,8 @@ st.divider()
 # Get data and keep in cache
 data = startup()
 
+quarter_crime = [data[i].shape[0] for i in range(len(data))]
+
 with st.expander('Select data'):
     yeshuv = yeshuv_element()
     if yeshuv is not None:
@@ -31,6 +33,8 @@ with st.expander('Select data'):
                 stationKod = [k for k, v in st.session_state['station_dict'].items() if v == station][0]
 
         quarter_crime = [data[i].loc[data[i]['PoliceDistrictKod'] == districtKod].shape[0] for i in range(len(data))]
+
+
 
 name = [f'{data[i]['Year'].unique().tolist()[0]}_{data[i]['Quarter'].unique().tolist()[0]}'
         for i in range(len(data))]
