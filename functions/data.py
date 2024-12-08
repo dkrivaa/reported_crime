@@ -61,7 +61,7 @@ def get_data(resource_id, filters=None):
     return df
 
 
-@st.cache_data(show_spinner='Loading data.......', persist='disk')
+# @st.cache_data(show_spinner='Loading data.......', persist='disk')
 def startup():
     yeshuv_set = set()
     district_set = set()
