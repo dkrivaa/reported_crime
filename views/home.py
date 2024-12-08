@@ -7,7 +7,7 @@ st.title('Reported Crime')
 
 data = startup()
 
-for i in range(len(data)):
-    st.write(len(data[i]))
+quarter_crime = [len(data[i]) for i in range(len(data))]
+st.write(quarter_crime)
 
 
