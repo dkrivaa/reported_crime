@@ -2,6 +2,10 @@ import streamlit as st
 import pandas as pd
 
 
+def yeshuv_element():
+    return st.selectbox('Municipality', options=st.session_state['yeshuv_dict'].values(), index=None)
+
+
 def district_element():
     return st.selectbox('Police District', options=st.session_state['district_dict'].values(), index=None)
 
