@@ -18,7 +18,7 @@ with st.expander('Select data'):
     if yeshuv is not None:
         yeshuvKod = [k for k, v in st.session_state['yeshuv_dict'].items() if v == yeshuv][0]
 
-
+        quarter_crime = [data[i].loc[data[i]['yeshuvKod'] == yeshuvKod].shape[0] for i in range(len(data))]
 
     district = district_element()
     if district is not None:
@@ -32,7 +32,7 @@ with st.expander('Select data'):
             if station is not None:
                 stationKod = [k for k, v in st.session_state['station_dict'].items() if v == station][0]
 
-        quarter_crime = [data[i].loc[data[i]['PoliceDistrictKod'] == districtKod].shape[0] for i in range(len(data))]
+        # quarter_crime = [data[i].loc[data[i]['PoliceDistrictKod'] == districtKod].shape[0] for i in range(len(data))]
 
 
 
