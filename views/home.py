@@ -13,6 +13,6 @@ name = [f'{data[i]['Year'].unique().tolist()[0]}_{data[i]['Quarter'].unique().to
         for i in range(len(data))]
 df = pd.DataFrame(quarter_crime, name)
 
-st.bar_chart(df['quarter_crime'])
+st.bar_chart(df)
 
 
