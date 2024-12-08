@@ -3,7 +3,9 @@ import pandas as pd
 
 
 def geography():
-    return st.radio('Select', ['Municipality', 'Police Territory'], index=None)
+    options = ['Municipality', 'Police Territory']
+    geo = st.radio(label='Select', options=options, index=None, label_visibility=False)
+    return options.index(geo)
 
 
 def yeshuv_element():
