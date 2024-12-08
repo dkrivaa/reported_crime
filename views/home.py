@@ -17,7 +17,7 @@ with st.expander('Select data'):
 
         quarter_crime = [data[i].shape[0] for i in range(len(data))]
         st.write(quarter_crime)
-        st.write(data[1]['PoliceDistrictKod'].unique().tolist())
+        st.write(type(data[1]['PoliceDistrictKod'].unique().tolist()[0]))
         name = [f'{data[i]['Year'].unique().tolist()[0]}_{data[i]['Quarter'].unique().tolist()[0]}'
                 for i in range(len(data))]
         df = pd.DataFrame(quarter_crime, name, columns=['Data'])
