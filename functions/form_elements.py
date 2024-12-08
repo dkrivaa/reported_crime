@@ -38,3 +38,13 @@ def station_element(merhavKod=None):
 
 def crimeGroup_element():
     return st.selectbox(label='Crime Group', options=st.session_state['crimeGroup_dict'].values(), index=None)
+
+
+def crimeType_element(crimeGroupKod=None):
+    if crimeGroupKod is None:
+        return st.selectbox(label='Crime Type', options=st.session_state['crimeType_dict'].values(), index=None)
+    elif crimeGroupKod is not None:
+        crimeTypes = st.session_state['group_type_dict'][crimeGroupKod]
+        options = [st.session_state['crimeType_dict'][crimeType] for crimeType in crimeTypes]
+        return st.selectbox(label='Crime Type', options=options, index=None)
+

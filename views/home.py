@@ -4,7 +4,7 @@ import altair as alt
 
 from functions.data import startup
 from functions.form_elements import (geography, yeshuv_element, district_element, merhav_element, station_element,
-                                     crimeGroup_element)
+                                     crimeGroup_element, crimeType_element)
 
 st.title('Reported Crime')
 st.divider()
@@ -51,8 +51,16 @@ with st.expander('Select Crime'):
     crimeGroup = crimeGroup_element()
     if crimeGroup is not None:
         crimeGroupKod = [k for k, v in st.session_state['crimeGroup_dict'].items() if v == crimeGroup][0]
+
         quarter_crime = [data[i].loc[data[i]['StatisticGroupKod'] == crimeGroupKod].shape[0] for i in
                          range(len(data))]
+
+        crimeType = crimeType_element(crimeGroupKod)
+        if crimeType is not None:
+            crimeTypeKod = [k for k, v in st.session_state['crimeType_dict'].items() if v == crimeType][0]
+
+            quarter_crime = [data[i].loc[data[i]['StatisticTypeKod'] == crimeTypeKod].shape[0] for i in
+                             range(len(data))]
 
 
 
