@@ -10,7 +10,7 @@ st.title('Reported Crime')
 st.divider()
 
 with st.expander('Select data'):
-        district = st.selectbox('District', options=st.session_state['district_dick'].values())
+    district = st.selectbox('District', options=st.session_state['district_dict'].values())
 
 quarter_crime = [len(data[i]) for i in range(len(data))]
 name = [f'{data[i]['Year'].unique().tolist()[0]}_{data[i]['Quarter'].unique().tolist()[0]}'
