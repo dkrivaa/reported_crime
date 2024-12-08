@@ -9,7 +9,7 @@ data = startup()
 
 st.write(len(data))
 
-st.write(st.session_state['district_dict'])
-
+for i in range(len(data)):
+    st.write(len(data[i]))
 
 
