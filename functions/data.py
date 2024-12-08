@@ -11,7 +11,7 @@ def resources():
         2021: '3f71fd16-25b8-4cfe-8661-e6199db3eb12',
         2022: 'a59f3e9e-a7fe-4375-97d0-76cea68382c1',
         2023: '32aacfc9-3524-4fba-a282-3af052380244',
-        # 2024: '5fc13c50-b6f3-4712-b831-a75e0f91a17e',
+        2024: '5fc13c50-b6f3-4712-b831-a75e0f91a17e',
     }
 
 
@@ -76,28 +76,30 @@ def startup():
         for quarter in quarters():
             df = get_data(resource, filters={'Quarter': quarter, })
 
-            # Copying regional councils to municipal and multiplying code to avoid identical codes
-            df['YeshuvKod'] = df['YeshuvKod'].fillna((df['municipalKod'] * 10000).where(df['municipalKod'].notna()))
-            df['Yeshuv'] = df['Yeshuv'].fillna(df['municipalName'].where(df['municipalKod'].notna()))
+            if len(df) > 0:
 
-            df = df.dropna(subset=['YeshuvKod'])
+                # Copying regional councils to municipal and multiplying code to avoid identical codes
+                df['YeshuvKod'] = df['YeshuvKod'].fillna((df['municipalKod'] * 10000).where(df['municipalKod'].notna()))
+                df['Yeshuv'] = df['Yeshuv'].fillna(df['municipalName'].where(df['municipalKod'].notna()))
 
-            def make_pairs(codes, names):
-                return set(zip(df[codes], df[names]))
+                df = df.dropna(subset=['YeshuvKod'])
 
-            yeshuv_set.update(make_pairs('YeshuvKod', 'Yeshuv'))
-            district_set.update(make_pairs('PoliceDistrictKod', 'PoliceDistrict'))
-            merhav_set.update(make_pairs('PoliceMerhavKod', 'PoliceMerhav'))
-            station_set.update(make_pairs('PoliceStationKod', 'PoliceStation'))
-            crimeGroup_set.update(make_pairs('StatisticGroupKod', 'StatisticGroup'))
-            crimeType_set.update(make_pairs('StatisticTypeKod', 'StatisticType'))
+                def make_pairs(codes, names):
+                    return set(zip(df[codes], df[names]))
 
-            columns_to_drop = ['FictiveIDNumber', 'Yeshuv', 'PoliceDistrict', 'PoliceMerhav',
-                               'PoliceStation', 'municipalKod', 'municipalName', 'StatisticAreaKod',
-                               'StatisticArea', 'StatisticGroup', 'StatisticType']
-            df.drop(columns=columns_to_drop, inplace=True)
+                yeshuv_set.update(make_pairs('YeshuvKod', 'Yeshuv'))
+                district_set.update(make_pairs('PoliceDistrictKod', 'PoliceDistrict'))
+                merhav_set.update(make_pairs('PoliceMerhavKod', 'PoliceMerhav'))
+                station_set.update(make_pairs('PoliceStationKod', 'PoliceStation'))
+                crimeGroup_set.update(make_pairs('StatisticGroupKod', 'StatisticGroup'))
+                crimeType_set.update(make_pairs('StatisticTypeKod', 'StatisticType'))
 
-            df_list.append(df)
+                columns_to_drop = ['FictiveIDNumber', 'Yeshuv', 'PoliceDistrict', 'PoliceMerhav',
+                                   'PoliceStation', 'municipalKod', 'municipalName', 'StatisticAreaKod',
+                                   'StatisticArea', 'StatisticGroup', 'StatisticType']
+                df.drop(columns=columns_to_drop, inplace=True)
+
+                df_list.append(df)
 
     def make_dict(name, pair_set):
         if name not in st.session_state:
