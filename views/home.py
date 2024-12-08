@@ -46,6 +46,8 @@ with st.expander('Select Geographic Area'):
                     quarter_crime = [data[i].loc[data[i]['PoliceStationKod'] == stationKod].shape[0] for i in
                                      range(len(data))]
 
+with st.expander('Select Crime'):
+    pass
 
 
 
