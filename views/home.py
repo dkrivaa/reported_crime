@@ -13,6 +13,6 @@ name = [f'{data[i]['Year'].unique().tolist()[0]}_{data[i]['Quarter'].unique().to
 st.write(quarter_crime)
 st.write(name)
 
-st.bar_chart(quarter_crime, name)
+st.bar_chart(quarter_crime, x=name)
 
 
