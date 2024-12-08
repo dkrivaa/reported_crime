@@ -15,13 +15,13 @@ data = startup()
 quarter_crime = [data[i].shape[0] for i in range(len(data))]
 
 with st.expander('Select Geographic Area'):
+    # Radio
     geo = geography()
 
     if geo == 0:
         yeshuv = yeshuv_element()
         if yeshuv is not None:
             yeshuvKod = [k for k, v in st.session_state['yeshuv_dict'].items() if v == yeshuv][0]
-            st.write()
 
             quarter_crime = [data[i].loc[data[i]['YeshuvKod'] == yeshuvKod].shape[0] for i in range(len(data))]
 
