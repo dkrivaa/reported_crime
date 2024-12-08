@@ -16,7 +16,12 @@ def merhav_element(districtKod=None):
 
 
 def station_element(merhavKod=None):
-    pass
+    if merhavKod is None:
+        return st.selectbox('Police Station', options=st.session_state['station_dict'].values(), index=None)
+    elif merhavKod is not None:
+        stations = st.session_state['merhav_station_dict'][merhavKod]
+        options = [st.session_state['station_dict'][station] for station in stations]
+        return st.selectbox('Police Station', options=options, index=None)
 
 
 
