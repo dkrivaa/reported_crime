@@ -15,7 +15,7 @@ with st.expander('Select data'):
         districtKod = (k for k, v in st.session_state['district_dict'].items() if v == district)
         st.write(districtKod)
 
-        quarter_crime = [(data[i].loc[data[i]['PoliceDistrictKod'] == districtKod]).shape[0] for i in range(len(data))]
+        quarter_crime = [data[i].shape[0] for i in range(len(data))]
         st.write(quarter_crime)
         name = [f'{data[i]['Year'].unique().tolist()[0]}_{data[i]['Quarter'].unique().tolist()[0]}'
                 for i in range(len(data))]
