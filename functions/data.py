@@ -74,7 +74,7 @@ def startup():
 
     for resource in resources().values():
         for quarter in quarters():
-            df = pd.DataFrame(get_data(resource, filters={'Quarter': quarter, }))
+            df = get_data(resource, filters={'Quarter': quarter, })
 
             # Copying regional councils to municipal and multiplying code to avoid identical codes
             df['YeshuvKod'] = df['YeshuvKod'].fillna((df['municipalKod'] * 10000).where(df['municipalKod'].notna()))
@@ -98,7 +98,6 @@ def startup():
             df.drop(columns=columns_to_drop, inplace=True)
 
             df_list.append(df)
-
 
     def make_dict(name, pair_set):
         if name not in st.session_state:
