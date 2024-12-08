@@ -15,19 +15,16 @@ with st.expander('Select data'):
         districtKod = (k for k, v in st.session_state['district_dict'].items() if v == district)
 st.write(districtKod)
 
-for i in range(len(data)):
-        st.write(data[i].columns)
+if districtKod is not None:
+    quarter_crime = [(data[i].loc[data[i]['PoliceDistrictKod'] == districtKod]).count() for i in range(len(data))]
+    name = [f'{data[i]['Year'].unique().tolist()[0]}_{data[i]['Quarter'].unique().tolist()[0]}'
+            for i in range(len(data))]
+    df = pd.DataFrame(quarter_crime, name, columns=['Data'])
 
-# if districtKod is not None:
-#         quarter_crime = [(data[i].loc[data[i]['PoliceDistrictKod'] == districtKod]).count() for i in range(len(data))]
-#         name = [f'{data[i]['Year'].unique().tolist()[0]}_{data[i]['Quarter'].unique().tolist()[0]}'
-#                 for i in range(len(data))]
-#         df = pd.DataFrame(quarter_crime, name, columns=['Data'])
-#
-#         st.bar_chart(df)
-#
-#         if st.button('Chart Data'):
-#                 st.write('')
-#                 st.write(df)
+    st.bar_chart(df)
+
+    if st.button('Chart Data'):
+          st.write('')
+          st.write(df)
 
 
