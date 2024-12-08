@@ -13,6 +13,10 @@ data = startup()
 
 with st.expander('Select data'):
     yeshuv = yeshuv_element()
+    if yeshuv is not None:
+        yeshuvKod = [k for k, v in st.session_state['yeshuv_dict'].items() if v == yeshuv][0]
+
+
 
     district = district_element()
     if district is not None:
@@ -27,15 +31,16 @@ with st.expander('Select data'):
                 stationKod = [k for k, v in st.session_state['station_dict'].items() if v == station][0]
 
         quarter_crime = [data[i].loc[data[i]['PoliceDistrictKod'] == districtKod].shape[0] for i in range(len(data))]
-        name = [f'{data[i]['Year'].unique().tolist()[0]}_{data[i]['Quarter'].unique().tolist()[0]}'
-                for i in range(len(data))]
-        df = pd.DataFrame(quarter_crime, name, columns=['Data'])
 
-        st.bar_chart(df)
+name = [f'{data[i]['Year'].unique().tolist()[0]}_{data[i]['Quarter'].unique().tolist()[0]}'
+        for i in range(len(data))]
+df = pd.DataFrame(quarter_crime, name, columns=['Data'])
 
-        if st.button('Chart Data'):
-            st.write('')
-            st.write(df)
+st.bar_chart(df)
+
+if st.button('Chart Data'):
+    st.write('')
+    st.write(df)
 
 
 
