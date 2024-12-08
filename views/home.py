@@ -17,8 +17,9 @@ with st.expander('Select data'):
     yeshuv = yeshuv_element()
     if yeshuv is not None:
         yeshuvKod = [k for k, v in st.session_state['yeshuv_dict'].items() if v == yeshuv][0]
+        st.write()
 
-        quarter_crime = [data[i].loc[data[i]['yeshuvKod'] == yeshuvKod].shape[0] for i in range(len(data))]
+        quarter_crime = [data[i].loc[data[i]['YeshuvKod'] == yeshuvKod].shape[0] for i in range(len(data))]
 
     district = district_element()
     if district is not None:
