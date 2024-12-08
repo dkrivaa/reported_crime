@@ -7,8 +7,6 @@ st.title('Reported Crime')
 
 data = startup()
 
-st.write(len(data))
-
 for i in range(len(data)):
     st.write(len(data[i]))
 
