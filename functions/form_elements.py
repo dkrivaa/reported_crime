@@ -10,6 +10,10 @@ def merhav_element(district=None):
     if district is None:
         return st.selectbox('Police Area', options=st.session_state['merhav_dict'].values(), index=None)
     elif district is not None:
-        district_name = st.session_state['district_dict'][district]
+        merhavim = st.session_state['district_merhav_dict'][district]
+        options = [st.session_state['merhav_dict'][merhav] for merhav in merhavim]
+        return st.selectbox('Police Area', options=options, index=None)
+
+
 
 

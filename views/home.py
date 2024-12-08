@@ -3,7 +3,7 @@ import streamlit as st
 import altair as alt
 
 from functions.data import startup
-from functions.form_elements import district_element
+from functions.form_elements import district_element, merhav_element
 
 st.title('Reported Crime')
 st.divider()
@@ -16,6 +16,8 @@ with st.expander('Select data'):
     if district is not None:
         districtKod = [k for k, v in st.session_state['district_dict'].items() if v == district][0]
         st.write(districtKod)
+
+        merhav = merhav_element
 
         quarter_crime = [data[i].loc[data[i]['PoliceDistrictKod'] == districtKod].shape[0] for i in range(len(data))]
         st.write(quarter_crime)
