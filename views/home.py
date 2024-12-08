@@ -13,7 +13,7 @@ data = startup()
 
 quarter_crime = [data[i].shape[0] for i in range(len(data))]
 
-with st.expander('Select data'):
+with st.expander('Select Geographic Area'):
     geo = geography()
 
     if geo == 0:
