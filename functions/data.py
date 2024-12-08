@@ -86,7 +86,7 @@ def startup():
                 return set(zip(df[codes], df[names]))
 
             yeshuv_set.update(make_pairs('YeshuvKod', 'Yeshuv'))
-            district_set.update(make_pairs('PoliceDistrictKod	', 'PoliceDistrict'))
+            district_set.update(make_pairs('PoliceDistrictKod', 'PoliceDistrict'))
             merhav_set.update(make_pairs('PoliceMerhavKod', 'PoliceMerhav'))
             station_set.update(make_pairs('PoliceStationKod', 'PoliceStation'))
             crimeGroup_set.update(make_pairs('StatisticGroupKod', 'StatisticGroup'))
