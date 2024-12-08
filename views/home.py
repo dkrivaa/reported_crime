@@ -16,7 +16,7 @@ name = [f'{data[i]['Year'].unique().tolist()[0]}_{data[i]['Quarter'].unique().to
         for i in range(len(data))]
 df = pd.DataFrame(quarter_crime, name, columns=['Data'])
 
-st.bar_chart(df, x_label='Quarter')
+st.bar_chart(df)
 
 if st.button('Chart Data'):
         st.write(df)
