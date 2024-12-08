@@ -13,6 +13,7 @@ with st.expander('Select data'):
     district = st.selectbox('District', options=st.session_state['district_dict'].values(), index=None)
     if district is not None:
         district = (k for k,v in st.session_state['district_dict'].items() if v == district)
+        st.write(district)
 
 if district is not None:
         quarter_crime = [len(data[i].loc[data[i]['PoliceDistrictKod'] == district]) for i in range(len(data))]
