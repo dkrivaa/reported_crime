@@ -3,7 +3,8 @@ import pandas as pd
 
 
 def yeshuv_element():
-    return st.selectbox('Municipality', options=st.session_state['yeshuv_dict'].values(), index=None)
+    options = sorted(st.session_state['yeshuv_dict'].values())
+    return st.selectbox('Municipality', options=options, index=None)
 
 
 def district_element():
