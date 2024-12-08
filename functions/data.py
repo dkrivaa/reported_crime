@@ -90,7 +90,7 @@ def startup():
             merhav_set.update(make_pairs('PoliceMerhavKod', 'PoliceMerhav'))
             station_set.update(make_pairs('PoliceStationKod', 'PoliceStation'))
             crimeGroup_set.update(make_pairs('StatisticGroupKod', 'StatisticGroup'))
-            crimeType_set.update(make_pairs('StatisticTypeKod', 'StatisticType	'))
+            crimeType_set.update(make_pairs('StatisticTypeKod', 'StatisticType'))
 
             columns_to_drop = ['FictiveIDNumber', 'Yeshuv', 'PoliceDistrict', 'PoliceMerhav',
                                'PoliceStation', 'municipalKod', 'municipalName', 'StatisticAreaKod',
