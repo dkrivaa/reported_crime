@@ -8,7 +8,8 @@ st.title('Reported Crime')
 data = startup()
 
 quarter_crime = [len(data[i]) for i in range(len(data))]
-name = [data[i]['Quarter'].unique().tolist()[0] for i in range(len(data))]
+name = [f'{data[i]['Year'].unique().tolist()[0]}_{data[i]['Quarter'].unique().tolist()[0]}'
+        for i in range(len(data))]
 st.write(quarter_crime)
 st.write(name)
 
