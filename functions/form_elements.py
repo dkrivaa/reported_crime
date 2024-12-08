@@ -36,5 +36,5 @@ def station_element(merhavKod=None):
         return st.selectbox('Police Station', options=options, index=None)
 
 
-def crime_group_element():
+def crimeGroup_element():
     return st.selectbox(label='Crime Group', options=st.session_state['crimeGroup_dict'].values(), index=None)
