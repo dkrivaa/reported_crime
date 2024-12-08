@@ -29,15 +29,24 @@ with st.expander('Select data'):
         if district is not None:
             districtKod = [k for k, v in st.session_state['district_dict'].items() if v == district][0]
 
+            quarter_crime = [data[i].loc[data[i]['PoliceDistrictKod'] == districtKod].shape[0] for i in
+                             range(len(data))]
+
             merhav = merhav_element(districtKod)
             if merhav is not None:
                 merhavKod = [k for k, v in st.session_state['merhav_dict'].items() if v == merhav][0]
+
+                quarter_crime = [data[i].loc[data[i]['PoliceMerhavKod'] == merhavKod].shape[0] for i in
+                                 range(len(data))]
 
                 station = station_element(merhavKod)
                 if station is not None:
                     stationKod = [k for k, v in st.session_state['station_dict'].items() if v == station][0]
 
-            quarter_crime = [data[i].loc[data[i]['PoliceDistrictKod'] == districtKod].shape[0] for i in range(len(data))]
+                    quarter_crime = [data[i].loc[data[i]['PoliceStationKod'] == stationKod].shape[0] for i in
+                                     range(len(data))]
+
+
 
 
 
