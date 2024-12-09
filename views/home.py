@@ -17,7 +17,7 @@ if 'yeshuv_dict' not in st.session_state:
 # Get data and keep in cache
 data = startup()
 
-quarter_crime = [data[i].shape[0] for i in range(len(data))]
+quarter_crime = [df.shape[0] for df in data]
 
 filter_dict = {
     'yeshuvKod': None,
@@ -82,10 +82,10 @@ with st.expander('Select Crime'):
             # quarter_crime = [data[i][data[i]['StatisticTypeKod'] == crimeTypeKod].shape[0] for i in
             #                  range(len(data))]
 
+if filter_dict.values() is not None:
+    quarter_crime = [use_filters(df, filter_dict) for df in data]
 
-quarter_crime = [use_filters(df, filter_dict) for df in data]
-
-st.write(quarter_crime)
+    st.write(quarter_crime)
 
 
 
