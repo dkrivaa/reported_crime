@@ -9,10 +9,9 @@ from functions.form_elements import (geography, yeshuv_element, district_element
 st.title('Reported Crime')
 st.divider()
 
-
+# If not session_state, start over
 if 'yeshuv_dict' not in st.session_state:
     st.cache_data.clear()
-
 
 # Get data and keep in cache
 data = startup()
@@ -28,7 +27,7 @@ with st.expander('Select Geographic Area'):
         if yeshuv is not None:
             yeshuvKod = [k for k, v in st.session_state['yeshuv_dict'].items() if v == yeshuv][0]
 
-            quarter_crime = [data[i].loc[data[i]['YeshuvKod'] == yeshuvKod].shape[0] for i in range(len(data))]
+            quarter_crime = [data[i][data[i]['YeshuvKod'] == yeshuvKod].shape[0] for i in range(len(data))]
 
     elif geo == 1:
         district = district_element()
