@@ -88,13 +88,9 @@ with st.expander('Select Crime'):
             # quarter_crime = [data[i][data[i]['StatisticTypeKod'] == crimeTypeKod].shape[0] for i in
             #                  range(len(data))]
 
-st.write(filter_dict)
 
 if any(value is not None for value in filter_dict.values()):
     quarter_crime = [use_filters(df, filter_dict) for df in data]
-
-    st.write(quarter_crime)
-
 
 
 name = [f'{data[i]['Year'].unique().tolist()[0]}_{data[i]['Quarter'].unique().tolist()[0]}'
