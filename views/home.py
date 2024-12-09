@@ -36,7 +36,7 @@ with st.expander('Select Geographic Area'):
         yeshuv = yeshuv_element()
         if yeshuv is not None:
             yeshuvKod = [k for k, v in st.session_state['yeshuv_dict'].items() if v == yeshuv][0]
-            filter_dict['yeshuvKod'] = yeshuvKod
+            filter_dict['YeshuvKod'] = yeshuvKod
 
             # quarter_crime = [data[i][data[i]['YeshuvKod'] == yeshuvKod].shape[0] for i in range(len(data))]
 
