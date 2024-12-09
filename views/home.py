@@ -34,21 +34,21 @@ with st.expander('Select Geographic Area'):
         if district is not None:
             districtKod = [k for k, v in st.session_state['district_dict'].items() if v == district][0]
 
-            quarter_crime = [data[i].loc[data[i]['PoliceDistrictKod'] == districtKod].shape[0] for i in
+            quarter_crime = [data[i][data[i]['PoliceDistrictKod'] == districtKod].shape[0] for i in
                              range(len(data))]
 
             merhav = merhav_element(districtKod)
             if merhav is not None:
                 merhavKod = [k for k, v in st.session_state['merhav_dict'].items() if v == merhav][0]
 
-                quarter_crime = [data[i].loc[data[i]['PoliceMerhavKod'] == merhavKod].shape[0] for i in
+                quarter_crime = [data[i][data[i]['PoliceMerhavKod'] == merhavKod].shape[0] for i in
                                  range(len(data))]
 
                 station = station_element(merhavKod)
                 if station is not None:
                     stationKod = [k for k, v in st.session_state['station_dict'].items() if v == station][0]
 
-                    quarter_crime = [data[i].loc[data[i]['PoliceStationKod'] == stationKod].shape[0] for i in
+                    quarter_crime = [data[i][data[i]['PoliceStationKod'] == stationKod].shape[0] for i in
                                      range(len(data))]
 
 with st.expander('Select Crime'):
@@ -56,14 +56,14 @@ with st.expander('Select Crime'):
     if crimeGroup is not None:
         crimeGroupKod = [k for k, v in st.session_state['crimeGroup_dict'].items() if v == crimeGroup][0]
 
-        quarter_crime = [data[i].loc[data[i]['StatisticGroupKod'] == crimeGroupKod].shape[0] for i in
+        quarter_crime = [data[i][data[i]['StatisticGroupKod'] == crimeGroupKod].shape[0] for i in
                          range(len(data))]
 
         crimeType = crimeType_element(crimeGroupKod)
         if crimeType is not None:
             crimeTypeKod = [k for k, v in st.session_state['crimeType_dict'].items() if v == crimeType][0]
 
-            quarter_crime = [data[i].loc[data[i]['StatisticTypeKod'] == crimeTypeKod].shape[0] for i in
+            quarter_crime = [data[i][data[i]['StatisticTypeKod'] == crimeTypeKod].shape[0] for i in
                              range(len(data))]
 
 
