@@ -49,11 +49,11 @@ def selection_filter(df, k, v=None):
     if v is not None:
         return df[df[k] == v]
     else:
-        return
+        return df
 
 
 def use_filters(df, filter_dict):
     filtered_df = df
     for k, v in filter_dict.items():
-        filtered_df = selection_filter(df, k, v)
+        filtered_df = selection_filter(filtered_df, k, v)
     return filtered_df.shape[0]
