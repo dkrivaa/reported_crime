@@ -20,7 +20,7 @@ data = startup()
 quarter_crime = [df.shape[0] for df in data]
 
 filter_dict = {
-    'yeshuvKod': None,
+    'YeshuvKod': None,
     'PoliceDistrictKod': None,
     'PoliceMerhavKod': None,
     'PoliceStationKod': None,
