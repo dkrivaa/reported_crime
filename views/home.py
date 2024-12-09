@@ -9,6 +9,11 @@ from functions.form_elements import (geography, yeshuv_element, district_element
 st.title('Reported Crime')
 st.divider()
 
+
+if 'yeshuv_dict' not in st.session_state:
+    st.cache_data.clear()
+
+
 # Get data and keep in cache
 data = startup()
 
