@@ -97,15 +97,15 @@ if any(value is not None for value in filter_dict.values()):
 
 
 
-# name = [f'{data[i]['Year'].unique().tolist()[0]}_{data[i]['Quarter'].unique().tolist()[0]}'
-#         for i in range(len(data))]
-# df = pd.DataFrame(quarter_crime, name, columns=['Data'])
-#
-# st.bar_chart(df)
-#
-# if st.button('Chart Data'):
-#     st.write('')
-#     st.write(df)
+name = [f'{data[i]['Year'].unique().tolist()[0]}_{data[i]['Quarter'].unique().tolist()[0]}'
+        for i in range(len(data))]
+df = pd.DataFrame(quarter_crime, name, columns=['Data'])
+
+st.bar_chart(df)
+
+if st.button('Chart Data'):
+    st.write('')
+    st.write(df)
 
 
 
