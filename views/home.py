@@ -82,7 +82,7 @@ with st.expander('Select Crime'):
             # quarter_crime = [data[i][data[i]['StatisticTypeKod'] == crimeTypeKod].shape[0] for i in
             #                  range(len(data))]
 
-if filter_dict.values() is not None:
+if any(value is not None for value in filter_dict.values()):
     quarter_crime = [use_filters(df, filter_dict) for df in data]
 
     st.write(quarter_crime)
