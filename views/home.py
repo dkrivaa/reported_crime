@@ -33,6 +33,10 @@ with st.expander('Select Geographic Area'):
     geo = geography()
 
     if geo == 0:
+        filter_dict['PoliceDistrictKod'] = None
+        filter_dict['PoliceMerhavKod'] = None
+        filter_dict['PoliceStationKod'] = None
+
         yeshuv = yeshuv_element()
         if yeshuv is not None:
             yeshuvKod = [k for k, v in st.session_state['yeshuv_dict'].items() if v == yeshuv][0]
@@ -41,6 +45,8 @@ with st.expander('Select Geographic Area'):
             # quarter_crime = [data[i][data[i]['YeshuvKod'] == yeshuvKod].shape[0] for i in range(len(data))]
 
     elif geo == 1:
+        filter_dict['YeshuvKod'] = None
+
         district = district_element()
         if district is not None:
             districtKod = [k for k, v in st.session_state['district_dict'].items() if v == district][0]
