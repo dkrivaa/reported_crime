@@ -50,7 +50,7 @@ with st.expander('Select Geographic Area'):
         district = district_element()
         if district is not None:
             districtKod = [k for k, v in st.session_state['district_dict'].items() if v == district][0]
-            filter_dict['PoliceStationKod'] = districtKod
+            filter_dict['PoliceDistrictKod'] = districtKod
 
             # quarter_crime = [data[i][data[i]['PoliceDistrictKod'] == districtKod].shape[0] for i in
             #                  range(len(data))]
